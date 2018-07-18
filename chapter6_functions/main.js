@@ -79,5 +79,10 @@ const inputTwo = [13, 13];
 update.call(objThree, ...inputTwo);     // same with apply(objThree, inputTwo)
 
 let updateObjThree = update.bind(objThree);
-updateObjThree(15, 15);
+updateObjThree(15, 15);c
 let updateObj3with1993 = update.bind(objThree, 1993);
+
+
+// summary plus) chapter5. using short circuit.
+importedVal = importedVal || [] // OR operator gets true-like value or false-like value.
+                                // if OR get true-liked value first(=== importedVal is not undefined) then get own value
