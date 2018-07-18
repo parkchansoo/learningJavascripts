@@ -1,0 +1,18 @@
+.idea
+.idea/*
+*/.idea
+
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
+
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+.DS_Store
+.AppleDouble
+.LSOverride
