@@ -79,10 +79,24 @@ const inputTwo = [13, 13];
 update.call(objThree, ...inputTwo);     // same with apply(objThree, inputTwo)
 
 let updateObjThree = update.bind(objThree);
-updateObjThree(15, 15);c
+updateObjThree(15, 15);
 let updateObj3with1993 = update.bind(objThree, 1993);
 
 
+
+
 // summary plus) chapter5. using short circuit.
-importedVal = importedVal || [] // OR operator gets true-like value or false-like value.
-                                // if OR get true-liked value first(=== importedVal is not undefined) then get own value
+importedVal = importedVal || [];    // OR operator gets true-like value or false-like value.
+                                    // if OR get true-liked value first(=== importedVal is not undefined) then get own value
+
+// about destructuring assignment
+const obj = {
+    a: 14,
+    b: 19,
+    c: "hello",
+}
+let {a, b, c} = obj; // OK. a, b, c will get own values
+{a, b, c} = obj; // ERROR. {} interpret as block statement!
+({a, b, c} = obj); // OK.
+
+[a, b, d] = [1, 2, 3]; //OK.
