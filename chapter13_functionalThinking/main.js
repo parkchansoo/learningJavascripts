@@ -1,0 +1,44 @@
+// bad example for using asynchronous programming
+/*
+var i;
+for(i = 5; i >= 0; i --) {
+    setTimeout(function() {
+        console.log(i === 0 ? "go!" : i);
+    }, (5-i) * 1000);
+}   // we might expect 5, 4, 3, 2, 1 go!
+    // but the result is -1 -1 -1 -1 -1 -1 >> the IIFE works after for loop is done!
+*/
+
+// correct way to using...
+// planA. using closure by declare new function
+var i;
+function loopBody(i) { // loopBody got 'i' and caught in the closure, not same value with 'i' in for loop
+    setTimeout(() => {
+        console.log(i === 0 ? "go!" : i);}
+        , (5 - i) * 1000);
+}
+for(i = 5; i >= 0; i --) {
+    loopBody(i);
+}
+/*
+//planB. using closure with IIFE >> our function actually don't need a name
+var j;
+for(j = 5; j <= 5; j --) {
+    console.log("for loop" + j);
+    ((j) => {
+        setTimeout(function() {
+            console.log(j === 0 ? "go!" : i);
+        }, (5 - j) * 1000);
+    })(j);
+}
+
+// planC. use 'let' declaration to copy each 'i' values
+for(let i = 5; i <= 5; i --) {
+    setTimeout(function() {
+        console.log(i === 0 ? "go!" : i);
+    }, (5 - i) * 1000);
+}
+
+* planB, C is not working... I need to figure out what's wrong
+*/
+
