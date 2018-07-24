@@ -20,25 +20,37 @@ function loopBody(i) { // loopBody got 'i' and caught in the closure, not same v
 for(i = 5; i >= 0; i --) {
     loopBody(i);
 }
-/*
+
 //planB. using closure with IIFE >> our function actually don't need a name
-var j;
-for(j = 5; j <= 5; j --) {
-    console.log("for loop" + j);
-    ((j) => {
+var i;
+for(i = 5; i >= 0; i --) {
+    (function(i) {
         setTimeout(function() {
-            console.log(j === 0 ? "go!" : i);
-        }, (5 - j) * 1000);
-    })(j);
+            console.log(i === 0 ? "go!" : i);
+        }, (5 - i) * 500);
+    })(i)
 }
 
 // planC. use 'let' declaration to copy each 'i' values
-for(let i = 5; i <= 5; i --) {
+for(let i = 5; i >= 0; i --) {
     setTimeout(function() {
         console.log(i === 0 ? "go!" : i);
     }, (5 - i) * 1000);
 }
 
-* planB, C is not working... I need to figure out what's wrong
-*/
 
+//-- function can also get function!
+// example: sum function(sun for x or x^2 or....)
+function sum(arr, f) {
+    if(typeof f !== 'function') f = x => x;
+
+    return arr.reduce((a, x) => a += f(x), 0);
+}
+
+const arr = [1, 2, 3, 4];
+console.log(
+    sum(arr, 0)
+);
+console.log(
+    sum(arr, x => x*x)
+);
